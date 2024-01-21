@@ -1,0 +1,53 @@
+// Simple E-commerce Console Application in JavaScript
+
+// Sample product data
+const products = [
+  { id: 1, name: 'Product A', price: 20.99 },
+  { id: 2, name: 'Product B', price: 15.49 },
+  { id: 3, name: 'Product C', price: 30.00 },
+];
+
+// Shopping cart to store selected products
+const shoppingCart = [];
+
+// Function to display available products
+function displayProducts() {
+  console.log('Available Products:');
+  products.forEach(product => {
+    console.log(`${product.id}. ${product.name} - $${product.price.toFixed(2)}`);
+  });
+  console.log('\n');
+}
+
+// Function to add a product to the shopping cart
+function addToCart(productId) {
+  const selectedProduct = products.find(product => product.id === productId);
+
+  if (selectedProduct) {
+    shoppingCart.push(selectedProduct);
+    console.log(`${selectedProduct.name} added to the cart.\n`);
+  } else {
+    console.log('Invalid product ID. Please choose a valid product.\n');
+  }
+}
+
+// Function to calculate and display the total price of items in the cart
+function displayCartTotal() {
+  let total = 0;
+  console.log('Shopping Cart:');
+  shoppingCart.forEach(product => {
+    console.log(`${product.name} - $${product.price.toFixed(2)}`);
+    total += product.price;
+  });
+  console.log(`\nTotal: $${total.toFixed(2)}\n`);
+}
+
+// Main program
+displayProducts();
+
+// Simulating user interaction (you can modify this part as needed)
+addToCart(1);
+addToCart(3);
+
+// Display the final shopping cart and total
+displayCartTotal();
